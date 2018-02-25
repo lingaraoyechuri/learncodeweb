@@ -49,7 +49,11 @@
   boolean authflag = isvaliduser(username,password);
   
   if(authflag){
-	  session.setAttribute("mydba", username );
+	  session.setAttribute("user", username );
+	  String rurl= request.getParameter("requestUrl");
+	  if(rurl!=null)
+		  response.sendRedirect(rurl +".jsp");
+	  
 	  response.sendRedirect("courses.jsp");
   }else{
 	  response.sendRedirect("error.jsp");
